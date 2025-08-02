@@ -10,12 +10,12 @@ mqttClient.on('connect', () => {
 });
 
 mqttClient.on('message', (topic, message) => {
-  //const msg = message.toString();
-  console.log("Mensagem recebida:", message);
+  const msg = message.toString();
+  console.log("Mensagem recebida:", msg);
 
   wss.clients.forEach(client => {
     if (client.readyState === WebSocket.OPEN) {
-      client.send(message);
+      client.send(msg);
     }
   });
 });
@@ -24,4 +24,5 @@ wss.on('connection', ws => {
   console.log("WebSocket conectado");
   ws.send("WebSocket ativo");
 });
+
 
