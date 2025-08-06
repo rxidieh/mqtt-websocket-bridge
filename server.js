@@ -53,14 +53,14 @@ mqttClient.on('connect', () => {
 
 // Quando o ESP32 publica dados no tópico "esp32/dados"
 mqttClient.on('message', (topic, message) => {
-  if (topic === TOPICO_RECEBER) {
+  if (topic == TOPICO_RECEBER) {
     try {
       const json = JSON.parse(message.toString());
       console.log("📥 JSON recebido do ESP32:", json);
 
       // Envia o JSON para todos os WebSocket clients conectados
       clientesWebSocket.forEach(ws => {
-        if (ws.readyState === WebSocket.OPEN) {
+        if (ws.readyState == WebSocket.OPEN) {
           ws.send(JSON.stringify(json));
         }
       });
@@ -96,6 +96,7 @@ wss.on('connection', (ws) => {
     clientesWebSocket = clientesWebSocket.filter(c => c !== ws);
   });
 });
+
 
 
 
