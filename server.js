@@ -75,7 +75,7 @@ wss.on('connection', (ws) => {
   console.log("🌐 Cliente WebSocket conectado");
   clientesWebSocket.push(ws);
 
-  ws.send(JSON.stringify({ status: "WebSocket conectado" }));
+  //ws.send(JSON.stringify({ status: "WebSocket conectado" }));
 
   // Quando o Bubble envia um comando
   ws.on('message', (data) => {
@@ -96,5 +96,6 @@ wss.on('connection', (ws) => {
     clientesWebSocket = clientesWebSocket.filter(c => c !== ws);
   });
 });
+
 
 
