@@ -37,7 +37,7 @@ mqttClient.on('error', (err) => {
 
 // Quando recebe mensagem do ESP32
 mqttClient.on('message', (topic, message) => {
-  if (topic === TOPICO_RECEBER) {
+  if (topic == TOPICO_RECEBER) {
     try {
       const json = JSON.parse(message.toString());
       console.log("📥 JSON recebido do ESP32:", json);
@@ -75,6 +75,7 @@ wss.on('connection', (ws) => {
     clientesWebSocket = clientesWebSocket.filter(c => c !== ws);
   });
 });
+
 
 
 
